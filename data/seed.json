@@ -1,0 +1,71 @@
+{
+  "regions": [
+    {
+      "id": "reg_01H1VQZV02T1Q9V8XJQZQZQZQZ",
+      "name": "US",
+      "currency_code": "usd",
+      "tax_rate": 0,
+      "payment_providers": ["manual"],
+      "fulfillment_providers": ["manual"],
+      "countries": ["us"]
+    }
+  ],
+  "products": [
+    {
+      "title": "Medusa T-Shirt",
+      "subtitle": "Comfortable cotton t-shirt",
+      "description": "A soft, comfortable t-shirt perfect for everyday wear.",
+      "handle": "medusa-t-shirt",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-black-front.png"
+      ],
+      "options": [
+        {
+          "id": "opt_01H1VQZV02T1Q9V8XJQZQZQZQZ",
+          "title": "Size",
+          "values": ["S", "M", "L", "XL"]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Small",
+          "sku": "SHIRT-S",
+          "inventory_quantity": 100,
+          "manage_inventory": true,
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2200
+            }
+          ],
+          "options": [
+            {
+              "option_id": "opt_01H1VQZV02T1Q9V8XJQZQZQZQZ",
+              "value": "S"
+            }
+          ]
+        },
+        {
+          "title": "Medium",
+          "sku": "SHIRT-M",
+          "inventory_quantity": 100,
+          "manage_inventory": true,
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2200
+            }
+          ],
+          "options": [
+            {
+              "option_id": "opt_01H1VQZV02T1Q9V8XJQZQZQZQZ",
+              "value": "M"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
