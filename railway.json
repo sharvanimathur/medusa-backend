@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "npm run start",
+    "startCommand": "medusa migrations run && medusa start",
     "healthcheckPath": "/health"
   }
 }
