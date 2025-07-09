@@ -5,7 +5,11 @@ loadEnv(process.env.NODE_ENV || 'development', process.cwd());
 module.exports = defineConfig({
 	projectConfig: {
 		databaseUrl: process.env.DATABASE_URL,
-		workerMode: process.env.MEDUSA_WORKER_MODE,
+		workerMode: process.env.MEDUSA_WORKER_MODE as
+			| 'shared'
+			| 'worker'
+			| 'server',
+		redisUrl: process.env.REDIS_URL,
 		http: {
 			storeCors: process.env.STORE_CORS!,
 			adminCors: process.env.ADMIN_CORS!,
@@ -14,17 +18,28 @@ module.exports = defineConfig({
 			cookieSecret: process.env.COOKIE_SECRET || 'supersecret',
 		},
 	},
-	plugins: [
-		// ...
+	admin: {
+		disable: process.env.DISABLE_MEDUSA_ADMIN === 'true',
+	},
+	modules: [
 		{
-			resolve: '@medusajs/admin-sdk',
-			/** @type {import('@medusajs/admin-sdk').PluginOptions} */
+			resolve: '@medusajs/medusa/cache-redis',
 			options: {
-				// only enable `serve` in development
-				// you may need to add the NODE_ENV variable
-				// manually
-				serve: process.env.NODE_ENV === 'development',
-				// other options...
+				redisUrl: process.env.REDIS_URL,
+			},
+		},
+		{
+			resolve: '@medusajs/medusa/event-bus-redis',
+			options: {
+				redisUrl: process.env.REDIS_URL,
+			},
+		},
+		{
+			resolve: '@medusajs/medusa/workflow-engine-redis',
+			options: {
+				redis: {
+					url: process.env.REDIS_URL,
+				},
 			},
 		},
 	],
